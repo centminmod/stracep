@@ -3,8 +3,8 @@
 
 usage:
 
-./stracep processname
-./stracep processname timeout
+./stracep.sh processname
+./stracep.sh processname timeout
 ```
 
 strace `php-fpm` process for `10` seconds
