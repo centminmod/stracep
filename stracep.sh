@@ -1,12 +1,19 @@
 #!/bin/bash
+####################################
+# stracep.sh by George Liu
+# centminmod.com
+#####################################
+VER='0.1'
 
 run_strace() {
   one=$1
   two=$2
   if [ "$two" ]; then
-    timeout $two strace -q -tt -T -f -o strace-${one}.txt $(pidof "${one}" | sed 's/\([0-9]*\)/-p \1/g')
+    timeout $two strace -q -tt -T -f -o ${one}-strace.txt $(pidof "${one}" | sed 's/\([0-9]*\)/-p \1/g')
+    echo "saved: ${one}-strace.txt"
   else
-    strace -q -tt -T -f -o strace-${one}.txt $(pidof "${one}" | sed 's/\([0-9]*\)/-p \1/g')
+    strace -q -tt -T -f -o ${one}-strace.txt $(pidof "${one}" | sed 's/\([0-9]*\)/-p \1/g')
+    echo "saved: ${one}-strace.txt"
   fi
 }
 
